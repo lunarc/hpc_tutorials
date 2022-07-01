@@ -354,6 +354,27 @@ class OutputData:
         self.dofs_per_node = np.asarray(json_dict["dofs_per_node"])
         self.el_type = np.asarray(json_dict["el_type"])
 
+    def export_vtk(self, filename):
+        """Export results to VTK"""
+
+        print("Exporting results to %s." % filename)
+
+        points = self.coords.tolist()
+        polygons = (self.edof-1).tolist()
+
+        point_data = vtk.PointData(
+            vtk.Scalars(self.a.tolist(), name="pressure")
+        )
+        cell_data = vtk.CellData(
+            vtk.Scalars(self.max_flow, name="max_flow"),
+            vtk.Vectors(self.flow, "flow")
+        )
+        structure = vtk.PolyData(points=points, polygons=polygons)
+
+        vtk_data = vtk.VtkData(structure, point_data, cell_data)
+        vtk_data.tofile(filename, "ascii")
+
+
 
 class TempModel:
     def __init__(self):

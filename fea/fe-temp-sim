@@ -1,4 +1,0 @@
-#!/bin/sh
-LAUNCH_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
-export PYTHONPATH=$LAUNCH_DIR:$PYTHONPATH
-singularity run docker://jonaslindemann/calfem-python:latest python $LAUNCH_DIR/fe-temp-sim.py "$@"

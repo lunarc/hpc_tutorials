@@ -11,8 +11,8 @@ if __name__ == "__main__":
     temp_model = tm.TempModel()
     temp_model.input_data.el_size_factor = 0.05
 
-    a_range = np.linspace(0.01, 0.03, 20)
-    b_range = np.linspace(0.01, 0.03, 20)
+    a_range = np.linspace(0.01, 0.06, 10)
+    b_range = np.linspace(0.01, 0.06, 10)
 
     curr_dir = os.getcwd()
     job_number = 0

@@ -13,7 +13,7 @@
 cat $0
 
 # set the number of jobs - change for your requirements
-export NB_of_jobs=400
+export NB_of_jobs=100
 
 # Loop over the job number
 
